@@ -114,8 +114,8 @@ graph TD
    With lapse 下P95 / P99：略微上升 Max：兩情境相同 👉 尾端損失未下降
 
 🔥 Core Insight  
-- Death Benefit ↓（高 AV 給付減少）
-- Death Cost 尾端幾乎不變，未降低真正的保證風險。
+- Death Benefit 下降（高 AV 給付減少）
+- Death Cost 尾端幾乎不變，未降低真正的保證風險
 
 ---
 #### 3.  PV Profit 分析（Log Scale）
@@ -157,15 +157,12 @@ with lapse 平均 profit 略為右移
 No lapse 原本死亡保戶在 with lapse 下於死亡前提前解約，完全避免DB & DC ，PV profit 轉為正值（118,765），平均提升約 15 萬。這顯示 lapse 的主要價值並非來自解約費收入，而是來自避免少數高損失的死亡情境。
 
 
-🔥 Core Insight : 本次模擬結果中 PV profit 的提升主要來自 "Death avoided by lapse" 這類機率低但影響重大的事件，但從分布和數值來看影響有限。
+🔥 Core Insight : 本模擬結果 PV profit 提升主要來自 "Death avoided by lapse" 這類機率低但影響重大的事件，但從分布和數值來看影響有限。
 
 #### 🔍 核心發現
-1. Lapse 的雙重效果
-一方面會減少未來費用收入，原本不會發生死亡的保戶提前解約時，可能降低 PV profit；另一方面則使部分保戶提前退出風險池，降低未來死亡給付與保證成本暴露
-2. 平均 vs Tail
-模型平均 Profit 提升但 Tail Risk 不變，Lapse reduces frequency, not severity
-3. GMDB 的主要風險來自：
-市場大跌 + 發生死亡（Joint Tail Event）
+1. Lapse 的雙重效果 : 一方面會減少未來費用收入，原本不會發生死亡的保戶提前解約時，可能降低 PV profit；另一方面則使部分保戶提前退出風險池，降低未來死亡給付與保證成本暴露
+2. 模型平均 Profit 雖提升但 Tail Risk 不變
+3. GMDB 的主要風險來自 : 市場大跌 + 發生死亡（Joint Tail Event）
 
 👉 改善 Tail risk 仍需：保證設計 / 費率調整 / Hedging  
  
