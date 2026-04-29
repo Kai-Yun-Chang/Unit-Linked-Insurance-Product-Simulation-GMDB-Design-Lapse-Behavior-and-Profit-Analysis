@@ -97,33 +97,27 @@ graph TD
 | P99      | 4,406,276.8821  | 3,067,684.4443    | 972,626.5051            | 987,544.0700              |
 | Max      | 5,154,733.7489  | 3,250,789.7456    | 1,126,064.3153          | 1,126,064.3153            |
 
-圖說：
-但 Death Cost 的尾端幾乎不變，
-，但未降低真正的保證風險。
+
 - Death Benefit（給付金額）
-(1) Mean / Median
-With lapse 平均 DB 較低 👉 高 AV 保戶提前解約 → 高給付案例減少
-DB median 皆為 160萬 👉 至少一半案例仍由保證機制主導
+(1) Mean / Median  
+With lapse 平均 DB 較低 👉 高 AV 保戶提前解約 → 高給付案例減少  
+DB median 皆為 160萬 👉 至少一半案例仍由保證機制主導  
+
+(2) Tail（P95 / P99 / Max）  
+With lapse 下 P95、P99、Max 右尾明顯下降 👉 DB tail 來自高 AV（好市場），Lapse 移除高 AV 保戶 → 高給付減少  
+
+- Death Cost（實際風險）  
+(1) Mean
+With lapse 略高 👉 解約移除低風險（高 AV）路徑 留下來的死亡案例 AV 較低  
 
 (2) Tail（P95 / P99 / Max）
-with lapse 下 P95、P99、Max 右尾明顯下降 👉 DB tail 來自高 AV（好市場），Lapse 移除高 AV 保戶 → 高給付減少
+With lapse 下P95 / P99：略微上升 Max：兩情境相同 👉 尾端損失未下降
 
-🔹 Death Cost（實際風險）
-Mean
-With lapse 略高
-👉 解約移除低風險（高 AV）路徑
-👉 留下來死亡的案例更不利（AV 較低）
-Tail（P95 / P99 / Max）
-P95 / P99：略微上升
-Max：兩情境相同
-👉 尾端損失未下降
-解讀
-Lapse 改變的是「誰會死亡」
-❗但不改變「死亡時損失有多大」
 🔥 Core Insight
-DB ↓（高 AV 給付減少）
-Death Cost ≈ 不變（風險未降）
+Death Benefit ↓（高 AV 給付減少）
+Death Cost 尾端幾乎不變，未降低真正的保證風險。
 
+---
 3.  Profit 分布（Log Scale）
 
 圖說：
