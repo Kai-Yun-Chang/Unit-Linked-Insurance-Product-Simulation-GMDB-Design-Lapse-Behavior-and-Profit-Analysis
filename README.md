@@ -91,16 +91,6 @@ graph TD
 
 #### 2.  Conditional Death Benefit vs Death Cost
 
-| Metric   | DB (No Lapse)   | DB (With Lapse)   | Death Cost (No Lapse)   | Death Cost (With Lapse)   |
-|:---------|----------------:|------------------:|------------------------:|--------------------------:|
-| Mean     | 1,917,997.4506  | 1,827,976.5197    | 273,016.5489            | 277,066.9240              |
-| Median   | 1,600,000.0000  | 1,600,000.0000    | 186,248.4303            | 200,121.8030              |
-| P95      | 3,079,608.0688  | 2,758,799.2435    | 829,880.3162            | 834,639.8409              |
-| P99      | 4,406,276.8821  | 3,067,684.4443    | 972,626.5051            | 987,544.0700              |
-| Max      | 5,154,733.7489  | 3,250,789.7456    | 1,126,064.3153          | 1,126,064.3153            |
-
-![圖片描述](pics/db.png)
-![圖片描述](pics/dc.png)
 
 **Death Benefit（給付金額）**  
 -  Mean / Median  
@@ -119,8 +109,26 @@ graph TD
 - Death Benefit 下降（高 AV 給付減少）
 - Death Cost 尾端幾乎不變，未降低真正的保證風險
 
+| Metric   | DB (No Lapse)   | DB (With Lapse)   | Death Cost (No Lapse)   | Death Cost (With Lapse)   |
+|:---------|----------------:|------------------:|------------------------:|--------------------------:|
+| Mean     | 1,917,997.4506  | 1,827,976.5197    | 273,016.5489            | 277,066.9240              |
+| Median   | 1,600,000.0000  | 1,600,000.0000    | 186,248.4303            | 200,121.8030              |
+| P95      | 3,079,608.0688  | 2,758,799.2435    | 829,880.3162            | 834,639.8409              |
+| P99      | 4,406,276.8821  | 3,067,684.4443    | 972,626.5051            | 987,544.0700              |
+| Max      | 5,154,733.7489  | 3,250,789.7456    | 1,126,064.3153          | 1,126,064.3153            |
+
+![圖片描述](pics/db.png)
+![圖片描述](pics/dc.png)
+
 ---
 #### 3.  PV Profit 分析（Log Scale）
+
+
+-  Min、P1  
+在 no lapse 與 with lapse 下皆相同、P5接近 👉 最極端虧損路徑幾乎相同  
+-  Mean、Total PV Profit  
+with lapse 平均 profit 略為右移  
+🔥 Core Insight : 最壞情境（極端虧損）在兩種情境下幾乎相同，代表 lapse 無法消除 joint tail event（市場下跌 + 死亡）， tail risk 並未改善
 
 | Metric       | No Lapse         | With Lapse       |
 |:-------------|-----------------:|-----------------:|
@@ -133,14 +141,8 @@ graph TD
 
 ![圖片描述](pics/pro.png)
 
--  Min、P1  
-在 no lapse 與 with lapse 下皆相同、P5接近 👉 最極端虧損路徑幾乎相同  
--  Mean、Total PV Profit  
-with lapse 平均 profit 略為右移  
 
 
-
-🔥 Core Insight : 最壞情境（極端虧損）在兩種情境下幾乎相同，代表 lapse 無法消除 joint tail event（市場下跌 + 死亡）， tail risk 並未改善
 
 🔍  Outcome Decomposition (將保戶分為三類)
 
