@@ -45,7 +45,7 @@ graph TD
         S1 -->|U >= qx| Alive[生存]
         Dead --> DB[計算給付額DB]
         Alive --> |AV不足扣款| Lapse[保單失效]
-        Alive --> |存續|S2[GBM 模擬標的資產路徑、隨機解約模擬]
+        Alive --> |存續|S2[模擬標的資產路徑 (GBM) 、隨機解約模擬]
         S2 --> |lapse| Lapse2[解約: 計算surrender charge/ surrender value]
         S2 --> |NO lapse|S3[套用保單結構更新AV]
         S3 --> |進入下個月模擬| S1
