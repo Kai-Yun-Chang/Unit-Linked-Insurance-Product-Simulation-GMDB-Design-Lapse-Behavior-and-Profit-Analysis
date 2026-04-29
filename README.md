@@ -85,15 +85,44 @@ graph TD
 | Unconditional Death Cost (Mean)    | 19,930.2081    | 18,286.4170    |
 
 ![圖片描述](Images/av.png)
-圖說：
-Unconditional AV 會受到死亡與解約（補 0）影響而下降；
-Conditional AV 僅計算仍在池中的保戶，因此較高。
 
-3.  Death Benefit vs Death Cost
+
+2.  Conditional Death Benefit vs Death Cost
+
+| Metric   | DB (No Lapse)   | DB (With Lapse)   | Death Cost (No Lapse)   | Death Cost (With Lapse)   |
+|:---------|----------------:|------------------:|------------------------:|--------------------------:|
+| Mean     | 1,917,997.4506  | 1,827,976.5197    | 273,016.5489            | 277,066.9240              |
+| Median   | 1,600,000.0000  | 1,600,000.0000    | 186,248.4303            | 200,121.8030              |
+| P95      | 3,079,608.0688  | 2,758,799.2435    | 829,880.3162            | 834,639.8409              |
+| P99      | 4,406,276.8821  | 3,067,684.4443    | 972,626.5051            | 987,544.0700              |
+| Max      | 5,154,733.7489  | 3,250,789.7456    | 1,126,064.3153          | 1,126,064.3153            |
 
 圖說：
-with lapse 下 DB 的右尾明顯下降，但 Death Cost 的尾端幾乎不變，
-表示解約減少高 AV 給付，但未降低真正的保證風險。
+但 Death Cost 的尾端幾乎不變，
+，但未降低真正的保證風險。
+- Death Benefit（給付金額）
+(1) Mean / Median
+With lapse 平均 DB 較低 👉 高 AV 保戶提前解約 → 高給付案例減少
+DB median 皆為 160萬 👉 至少一半案例仍由保證機制主導
+
+(2) Tail（P95 / P99 / Max）
+with lapse 下 P95、P99、Max 右尾明顯下降 👉 DB tail 來自高 AV（好市場），Lapse 移除高 AV 保戶 → 高給付減少
+
+🔹 Death Cost（實際風險）
+Mean
+With lapse 略高
+👉 解約移除低風險（高 AV）路徑
+👉 留下來死亡的案例更不利（AV 較低）
+Tail（P95 / P99 / Max）
+P95 / P99：略微上升
+Max：兩情境相同
+👉 尾端損失未下降
+解讀
+Lapse 改變的是「誰會死亡」
+❗但不改變「死亡時損失有多大」
+🔥 Core Insight
+DB ↓（高 AV 給付減少）
+Death Cost ≈ 不變（風險未降）
 
 3.  Profit 分布（Log Scale）
 
