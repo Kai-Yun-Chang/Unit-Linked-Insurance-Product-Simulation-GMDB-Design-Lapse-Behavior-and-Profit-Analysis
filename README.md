@@ -101,7 +101,7 @@ graph TD
 
 
 - Death Benefit（給付金額）  
-(1) Mean / Median  
+*(1) Mean / Median*  
 With lapse 平均 DB 較低 👉 高 AV 保戶提前解約 → 高給付案例減少  
 DB median 皆為 160萬 👉 至少一半案例仍由保證機制主導  
 (2) Tail（P95 / P99 / Max）    
