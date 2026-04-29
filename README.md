@@ -13,7 +13,7 @@
 3. 引入動態解約模型（dynamic lapse model），使保戶行為隨帳戶價值、保證水準與市場環境變動。
 
 ---
-#### 💻 核心程式碼 完整模擬過程與數據分析請參考： [GMDB 定價模型主程式 (Jupyter Notebook)](./Simulation.ipynb)
+#### 💻 核心程式碼 完整模擬過程與數據分析請參考： [投資型商品模型主程式 (Jupyter Notebook)](./Unit_Linked_Insurance_Product_Simulation.ipynb)
 ------
 
 ### 🎯 目標 : 利用 paired Monte Carlo simulation，在相同市場路徑與死亡隨機數下比較 No Lapse vs With Lapse
