@@ -101,16 +101,16 @@ graph TD
 
 
 **Death Benefit（給付金額）**  
--  Mean / Median
-   With lapse 平均 DB 較低 👉 高 AV 保戶提前解約 → 高給付案例減少  
+-  Mean / Median  
+   With lapse 平均 DB 較低 👉 高 AV 保戶提前解約 → 高給付案例減少    
    DB median 皆為 160萬 👉 至少一半案例仍由保證機制主導
--  Tail（P95 / P99 / Max）    
+-  Tail（P95 / P99 / Max）      
    With lapse 下 P95、P99、Max 右尾明顯下降 👉 DB tail 來自高 AV（好市場），Lapse 移除高 AV 保戶 → 高給付減少  
 
 **Death Cost（實際風險）**      
--  Mean
+-  Mean  
    With lapse 略高 👉 解約移除低風險（高 AV）路徑 留下來的死亡案例 AV 較低  
--  Tail（P95 / P99 / Max）  
+-  Tail（P95 / P99 / Max）    
    With lapse 下P95 / P99：略微上升 Max：兩情境相同 👉 尾端損失未下降
 
 🔥 Core Insight  
