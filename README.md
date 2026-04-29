@@ -66,7 +66,7 @@ graph TD
 
 ---
 ### 📊 模擬結果
-1.  No Lapse / With Lapse 模型基本比較
+#### 1.  No Lapse / With Lapse 模型基本比較
    
 - Final AV : With lapse（153萬）低於 No lapse（180萬）(解約後 AV 補 0 → 拉低整體平均)
 - Lapse Behavior : With lapse 模型解約率約 9.9%、平均發生於 第 13 年
@@ -88,7 +88,7 @@ graph TD
 
 ---
 
-2.  Conditional Death Benefit vs Death Cost
+#### 2.  Conditional Death Benefit vs Death Cost
 
 | Metric   | DB (No Lapse)   | DB (With Lapse)   | Death Cost (No Lapse)   | Death Cost (With Lapse)   |
 |:---------|----------------:|------------------:|------------------------:|--------------------------:|
@@ -119,31 +119,53 @@ Death Benefit ↓（高 AV 給付減少）
 Death Cost 尾端幾乎不變，未降低真正的保證風險。
 
 ---
-3.  Profit 分布（Log Scale）
+#### 3.  PV Profit 分析（Log Scale）
 
-圖說：
-with lapse 平均 profit 略為右移，但左尾（虧損區）幾乎重疊，
-顯示 tail risk 並未改善。
+| Metric       | No Lapse         | With Lapse       |
+|:-------------|-----------------:|-----------------:|
+| Min          | -798,481.0257    | -798,481.0257    |
+| P1           | -402,261.9864    | -402,261.9864    |
+| P5           | 109,459.5953     | 105,271.9762     |
+| Median       | 132,054.6660     | 131,398.1018     |
+| Mean         | 117,115.3022     | 117,467.4978     |
+| Total Profit | 117,115,302.2221 | 117,467,497.8194 |
 
-⚠️ Tail Risk（Left Tail）
+(1) Min、P1
+在 no lapse 與 with lapse 下皆相同、P5接近 👉 最極端虧損路徑幾乎相同
+(2) Mean、Total PV Profit
+with lapse 平均 profit 略為右移
 
-圖說：
-最壞情境（極端虧損）在兩種情境下幾乎相同，
-代表 lapse 無法消除 joint tail event（市場下跌 + 死亡）。
 
-🔍  Outcome Decomposition
 
-將保戶分為三類：
+🔥 Core Insight
+最壞情境（極端虧損）在兩種情境下幾乎相同，代表 lapse 無法消除 joint tail event（市場下跌 + 死亡）。
+但左尾（虧損區）幾乎重疊，顯示 tail risk 並未改善。
 
-類型	說明	對 Profit 影響
-Same outcome	無差異	無影響
-Survivor lapsed	提前解約	小幅下降
-Death avoided by lapse	避開死亡	大幅提升
+🔍  Outcome Decomposition (將保戶分為三類)
 
-📊 視覺化：
+| case_type              |   n | avg_db_no_lapse   | avg_db_with_lapse   | avg_dc_no_lapse   | avg_dc_with_lapse   | avg_pv_profit_no_lapse   | avg_pv_profit_with_lapse   |
+|:-----------------------|----:|------------------:|--------------------:|------------------:|--------------------:|-------------------------:|---------------------------:|
+| Same outcome           | 901 | 133,902.8305      | 133,902.8305        | 20,295.6903       | 20,295.6903         | 117,100.8448             | 117,100.8448               |
+| Survivor lapsed        |  92 | 0.0000            | 0.0000              | 0.0000            | 0.0000              | 128,653.4550             | 120,959.6084               |
+| Death avoided by lapse |   7 | 2,766,766.2280    | 0.0000              | 234,827.2981      | 0.0000              | -32,668.1179             | 118,764.6655               |
 
-圖說：
-平均 profit 的提升來自少數「避免死亡」的案例，而非整體改善。
+1. Same outcome >> (1) 保戶在兩邊皆死亡，且死亡發生在解約前 或 (2) 兩邊都未死亡、with lapse 也沒有解約
+這兩種情況兩模型現金流完全一致， PV profit 沒有任何差異。
+
+2. Survivor lapsed 
+保戶在兩種情境下皆未死亡( DB & DC = 0)，但 with lapse 下保戶提前解約少收未來管理費與 COI，雖有 surrender charge 作補償，但整體 PV profit 略為下降，顯示對於原本不會產生保證成本的保戶而言，lapse 反而降低公司利潤。
+
+3. Death avoided by lapse 
+No lapse 原本死亡保戶在 with lapse 下於死亡前提前解約，完全避免DB & DC ，PV profit 轉為正值（118,765），平均提升約 15 萬。這顯示 lapse 的主要價值並非來自解約費收入，而是來自避免少數高損失的死亡情境。
+
+
+|類型	|說明	|對 Profit 影響|
+|Same outcome	|無差異	|無影響|
+|Survivor lapsed	|提前解約	|小幅下降|
+|Death avoided by lapse	|避開死亡	|大幅提升|
+
+
+🔥 Core Insight : 平均 profit 的提升來自少數「避免死亡」的案例，而非整體改善。
 
 ## 🔥 核心發現
 1️⃣ Lapse 的雙重效果
