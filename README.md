@@ -24,6 +24,53 @@ Unit-Linked Insurance Simulation with GMDB and Dynamic Lapse Behavior
 
 ----------
 
+
+#### 💻 核心程式碼 完整模擬過程與數據分析請參考： [GMDB 定價模型主程式 (Jupyter Notebook)](./Simulation.ipynb)
+---
+
+## 🎯 Objectives
+
+- 比較不同 GMDB 設計（Basic / Ratchet / Roll-up）
+- 分析關鍵指標：
+  - Account Value (AV)
+  - Death Benefit (DB)
+  - Guarantee Cost (GC)
+  - Tail Risk
+  - Profit Distribution
+- 評估產品設計對風險與經濟成本的影響
+- 使用 risk-neutral 方法衡量保證的市場一致價值
+
+---
+
+## 🧩 Model Framework
+
+### Simulation Flow
+
+```mermaid
+graph TD
+    %% 主流程
+    Input[商品參數設定] --> stochastic[隨機路徑生成]
+    stochastic --> Simulation[蒙地卡羅模擬流程]
+    Simulation --> Risk-neutral[改用Risk-neutral評價Guarantee cost]
+    Risk-neutral --> Result[Profit and Risk Metrics]
+
+    %% 蒙地卡羅詳細步驟 (子圖)
+    subgraph Simulation [蒙地卡羅模擬流程]
+        S1[隨機抽樣死亡判定] -->|U < qx| Dead[死亡: 觸發理賠]
+        S1 -->|U >= qx| Alive[生存]
+        Dead --> DB[計算給付額DB]
+        Alive --> |AV不足 lapse| Lapse[失效: surrender value]
+        Alive --> |存續|S2[模擬標的資產路徑: GBM、隨機解約模擬]
+        S2 --> |lapse| Lapse2[解約: 計算surrender value]
+        S2 --> |NO lapse|S3[套用保單結構更新AV]
+        S4 --> |進入下個月模擬| S1
+    end
+
+    style Dead fill:#ffe9ef,stroke:#ffdee7
+    style Alive fill:#ffe9ef,stroke:#ffdee7
+    style Simulation fill:#c0d9d9,stroke:#01579b,stroke-width:2px
+```
+
 🧠 模型架構
 🔹 Monte Carlo + GBM
 模擬投資標的隨機路徑 → 產生 AV 分布
