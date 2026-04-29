@@ -86,6 +86,7 @@ graph TD
 
 ![圖片描述](Images/av.png)
 
+---
 
 2.  Conditional Death Benefit vs Death Cost
 
